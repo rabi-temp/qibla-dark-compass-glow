@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,6 +52,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Islamic Theme Colors */
+    --islamic-dark-blue: 210 100% 8%;
+    --islamic-navy: 220 91% 12%;
+    --islamic-gold: 45 100% 60%;
+    --islamic-light-gold: 45 100% 80%;
+    --islamic-teal: 180 100% 25%;
   }
 
   .dark {
@@ -98,6 +106,56 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 text-white min-h-screen;
+    font-family: 'Inter', system-ui, sans-serif;
   }
+}
+
+@layer utilities {
+  .islamic-gradient {
+    background: linear-gradient(135deg, hsl(var(--islamic-dark-blue)), hsl(var(--islamic-navy)), hsl(var(--islamic-teal)));
+  }
+  
+  .gold-gradient {
+    background: linear-gradient(45deg, hsl(var(--islamic-gold)), hsl(var(--islamic-light-gold)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .compass-glow {
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.5), 0 0 100px rgba(59, 130, 246, 0.3);
+  }
+  
+  .prayer-card {
+    background: rgba(30, 58, 138, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+}
+
+@keyframes rotate-smooth {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.8);
+  }
+}
+
+.animate-rotate-smooth {
+  animation: rotate-smooth 20s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
